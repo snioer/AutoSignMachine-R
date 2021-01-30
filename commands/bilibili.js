@@ -57,8 +57,8 @@ exports.handler = async function (argv) {
           NumberOfCoins: argv['NumberOfCoins-' + sn],
           CoinsForVideo: argv['CoinsForVideo-' + sn],
           SelectLike: argv['SelectLike-' + sn],
-          username: argv['username-' + sn],
-          password: argv['password-' + sn],
+          username: argv['username-' + sn] + '',
+          password: argv['password-' + sn] + '',
           tasks: argv['tasks-' + sn]
         }
         if (('tryrun-' + sn) in argv) {
@@ -69,7 +69,13 @@ exports.handler = async function (argv) {
     }
   } else {
     accounts.push({
-      ...argv
+      cookies: argv['cookies'],
+      NumberOfCoins: argv['NumberOfCoins'],
+      CoinsForVideo: argv['CoinsForVideo'],
+      SelectLike: argv['SelectLike'],
+      username: argv['username'] + '',
+      password: argv['password'] + '',
+      tasks: argv['tasks']
     })
   }
   console.log('总账户数', accounts.length)
@@ -80,8 +86,8 @@ exports.handler = async function (argv) {
         NumberOfCoins: account.NumberOfCoins,
         CoinsForVideo: account.CoinsForVideo,
         SelectLike: account.SelectLike,
-        username: account.username + '',
-        password: account.password + '',
+        username: account.username,
+        password: account.password,
       }
     }).catch(err => console.log("bilibili签到任务:", err.message))
     let hasTasks = await scheduler.hasWillTask(command, {
@@ -90,7 +96,7 @@ exports.handler = async function (argv) {
     })
     if (hasTasks) {
       scheduler.execTask(command, account.tasks).catch(err => console.log("bilibili签到任务:", err.message)).finally(() => {
-        console.log('全部任务执行完毕！')
+        console.log('当前任务执行完毕！')
       })
     } else {
       console.log('暂无可执行任务！')

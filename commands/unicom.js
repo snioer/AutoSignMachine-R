@@ -37,7 +37,7 @@ exports.handler = async function (argv) {
   var command = argv._[0]
   var accounts = []
   if ('accountSn' in argv && argv.accountSn) {
-    let accountSns = argv.accountSn.split(',')
+    let accountSns = (argv.accountSn + '').split(',')
     for (let sn of accountSns) {
       if (('user-' + sn) in argv) {
         let account = {
@@ -45,7 +45,7 @@ exports.handler = async function (argv) {
           user: argv['user-' + sn] + '',
           password: argv['password-' + sn] + '',
           appid: argv['appid-' + sn],
-          tasks: argv['tasks-' + sn]
+          tasks: argv['tasks-' + sn] || argv['tasks']
         }
         if (('tryrun-' + sn) in argv) {
           account['tryrun'] = true
@@ -55,7 +55,11 @@ exports.handler = async function (argv) {
     }
   } else {
     accounts.push({
-      ...argv
+      cookies: argv['cookies'],
+      user: argv['user'] + '',
+      password: argv['password'] + '',
+      appid: argv['appid'],
+      tasks: argv['tasks']
     })
   }
   console.log('总账户数', accounts.length)
@@ -74,7 +78,7 @@ exports.handler = async function (argv) {
     })
     if (hasTasks) {
       scheduler.execTask(command, account.tasks).catch(err => console.log("unicom任务:", err)).finally(() => {
-        console.log('全部任务执行完毕！')
+        console.log('当前任务执行完毕！')
       })
     } else {
       console.log('暂无可执行任务！')
