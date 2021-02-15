@@ -48,7 +48,7 @@ jobs:
       with:
         path: |
           /home/runner/.AutoSignMachine
-        key: ${{ runner.os }}-task-${{ hashFiles('**/taskFile_unicom_${{ secrets.unicom_user }}.json') }}
+        key: ${{ runner.os }}-task-${{ date::$(date +'%Y-%m-%d-%h') }}
        
     
     # 运行 unicom 签到任务
