@@ -57,12 +57,10 @@ jobs:
    #       ${{ runner.os }}-task-
    #       ${{ runner.os }}-
      
-    - name: 'Upload Artifact'
-      uses: actions/upload-artifact@v2
-      with:
-        name: my-artifact
-        path: /home/runner/.AutoSignMachine
-        retention-days: 1
+    - name: Download a single artifact
+      uses: actions/download-artifact@v2
+        with:
+         name: my-artifact
        
     
     # 运行 unicom 签到任务
@@ -72,4 +70,12 @@ jobs:
         password: ${{ secrets.unicom_password }}
         appid: ${{ secrets.unicom_appid }}
       run: node index.js unicom --user=${user} --password=${password} --appid=${appid} 
+      
+      
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        path: /home/runner/.AutoSignMachine
+        retention-days: 1
 
