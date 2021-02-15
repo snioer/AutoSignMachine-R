@@ -42,9 +42,15 @@ jobs:
     - name: Install dependencies
       run: npm install
       
-    - name: Set date time
-      id: date
-      run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%M:%S')"
+   # - name: Set date time
+   #   id: date
+   #   run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%M:%S')"
+    - name: Get current time
+      uses: 1466587594/get-current-time@v2
+      id: current-time
+      with:
+       format: YYYYMMDD-HH
+       utcOffset: "+08:00"
     
     - name: restore task cache
       uses: actions/cache@v2
@@ -52,7 +58,7 @@ jobs:
       with:
         path: |
           /home/runner/.AutoSignMachine
-        key: ${{ runner.os }}-task-${{ steps.date.outputs.date }}
+        key: ${{ runner.os }}-task-${{ steps.current-time.outputs.time }}
         restore-keys: |
           ${{ runner.os }}-task-
           ${{ runner.os }}-
