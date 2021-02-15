@@ -57,10 +57,10 @@ jobs:
    #       ${{ runner.os }}-task-
    #       ${{ runner.os }}-
      
-   # - name: Download a single artifact
-   #   uses: actions/download-artifact@v2
-   #  with:
-   #      name: my-artifact
+    - name: Download a single artifact
+      uses: actions/download-artifact@v2
+      with:
+         name: my-artifact
        
     
     # 运行 unicom 签到任务
