@@ -53,13 +53,15 @@ jobs:
        utcOffset: "+08:00"
    
     - name: Use current time
+      id: date
       env:
        TIME: "${{ steps.current-time.outputs.time }}"
        R_TIME: "${{ steps.current-time.outputs.readableTime }}"
        F_TIME: "${{ steps.current-time.outputs.formattedTime }}"
        YEAR: "${{ steps.current-time.outputs.year }}"
        DAY: "${{ steps.current-time.outputs.day }}"
-      run: echo $TIME $R_TIME $F_TIME $YEAR $DAY
+      #run: echo $TIME $R_TIME $F_TIME $YEAR $DAY
+      run: echo "::set-output name=date::$TIME"
     
     - name: restore task cache
       uses: actions/cache@v2
@@ -67,7 +69,7 @@ jobs:
       with:
         path: |
           /home/runner/.AutoSignMachine
-        key: ${{ runner.os }}-task- $TIME
+        key: ${{ runner.os }}-task-${{ steps.date.outputs.date }}
         restore-keys: |
           ${{ runner.os }}-task-
           ${{ runner.os }}-
