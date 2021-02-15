@@ -45,34 +45,24 @@ jobs:
    # - name: Set date time
    #   id: date
    #   run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%M:%S')"
-    - name: Get current time
-      uses: 1466587594/get-current-time@v2
-      id: current-time
-      with:
-       format: YYYYMMDD-HH
-       utcOffset: "+08:00"
-   
-    - name: Use current time
-      id: date
-      env:
-       TIME: "${{ steps.current-time.outputs.time }}"
-       R_TIME: "${{ steps.current-time.outputs.readableTime }}"
-       F_TIME: "${{ steps.current-time.outputs.formattedTime }}"
-       YEAR: "${{ steps.current-time.outputs.year }}"
-       DAY: "${{ steps.current-time.outputs.day }}"
-      #run: echo $TIME $R_TIME $F_TIME $YEAR $DAY
-      run: echo "::set-output name=date::$TIME"
     
-    - name: restore task cache
-      uses: actions/cache@v2
-      id: use-task-cache
+   # - name: restore task cache
+   #   uses: actions/cache@v2
+   #   id: use-task-cache
+   #   with:
+   #     path: |
+   #       /home/runner/.AutoSignMachine
+   #     key: ${{ runner.os }}-task-${{ steps.date.outputs.date }}
+   #     restore-keys: |
+   #       ${{ runner.os }}-task-
+   #       ${{ runner.os }}-
+     
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v2
       with:
-        path: |
-          /home/runner/.AutoSignMachine
-        key: ${{ runner.os }}-task-${{ steps.date.outputs.date }}
-        restore-keys: |
-          ${{ runner.os }}-task-
-          ${{ runner.os }}-
+        name: my-artifact
+        path: /home/runner/.AutoSignMachine
+        retention-days: 1
        
     
     # 运行 unicom 签到任务
