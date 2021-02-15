@@ -41,6 +41,10 @@ jobs:
     # 安装依赖
     - name: Install dependencies
       run: npm install
+    
+    - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
       
     - name: restore task cache
       uses: actions/cache@v2
@@ -48,7 +52,7 @@ jobs:
       with:
         path: |
           /home/runner/.AutoSignMachine
-        key: ${{ runner.os }}-task-${{ date::$(date +'%Y-%m-%d-%h') }}
+        key: ${{ runner.os }}-task-${{ steps.date.outputs.date }}
        
     
     # 运行 unicom 签到任务
