@@ -44,7 +44,7 @@ jobs:
       
     - name: Set date time
       id: date
-      run: echo "::set-output name=date::$(date +'%T')"
+      run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H:%M:%S')"
     
     - name: restore task cache
       uses: actions/cache@v2
