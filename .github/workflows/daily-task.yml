@@ -67,7 +67,7 @@ jobs:
       with:
         path: |
           /home/runner/.AutoSignMachine
-        key: ${{ runner.os }}-task-${{ $TIME }}
+        key: ${{ runner.os }}-task- $TIME
         restore-keys: |
           ${{ runner.os }}-task-
           ${{ runner.os }}-
