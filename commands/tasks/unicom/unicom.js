@@ -107,13 +107,13 @@ var start = async (params) => {
   }, taskOption)
 
   // 首页-签到有礼-免费抽-赢三星Galaxy Z(试试手气)
-  await scheduler.regTask('dailyCheapStorePage', async (request) => {
-    await require('./dailyCheapStorePage').doTask(request, options)
-  }, {
-    isCircle: true,
-    intervalTime: 4 * 3600,
-    ...taskOption
-  })
+ // await scheduler.regTask('dailyCheapStorePage', async (request) => {
+ //   await require('./dailyCheapStorePage').doTask(request, options)
+ // }, {
+ //   isCircle: true,
+ //   intervalTime: 4 * 3600,
+ //   ...taskOption
+//  })
 
   // 首页-签到有礼-免费抽-拆华为Pad(去抽奖)
   await scheduler.regTask('dailyLKMH', async (request) => {
