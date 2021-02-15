@@ -44,9 +44,9 @@ jobs:
       
     - name: Set date time
       id: date
-      run: echo "::set-output name=date::$(date +'%Y-%m-%d %H')"
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%M')"
     
-    - name: Set caceh time
+    - name: Set cache time
       id: cdate
       run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
     
@@ -56,7 +56,7 @@ jobs:
       with:
         path: |
           /home/runner/.AutoSignMachine
-        key: ${{ runner.os }}-task-${{ steps.date.outputs.date }}-1
+        key: ${{ runner.os }}-task-${{ steps.date.outputs.date }}
         restore-keys: |
           ${{ runner.os }}-task-${{ steps.cdate.outputs.date }}
           ${{ runner.os }}-
