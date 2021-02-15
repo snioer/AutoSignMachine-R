@@ -48,7 +48,7 @@ jobs:
       with:
         path: |
           /home/runner/.AutoSignMachine
-        key: ${{ runner.os }}-task-${{ hashFiles('**/package-lock.json') }}
+        key: ${{ runner.os }}-task-${{ hashFiles('/home/runner/.AutoSignMachine') }}
        
     
     # 运行 unicom 签到任务
