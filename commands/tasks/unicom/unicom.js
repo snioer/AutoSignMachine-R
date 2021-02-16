@@ -19,10 +19,10 @@ var start = async (params) => {
   }
 
   // 每日签到积分
-  await scheduler.regTask('dailysignin', async (request) => {
-    await require('./dailysignin').doTask(request, options)
-    await require('./integral').addFlow(request, options)
-  }, taskOption)
+ // await scheduler.regTask('dailysignin', async (request) => {
+ //   await require('./dailysignin').doTask(request, options)
+ //   await require('./integral').addFlow(request, options)
+ // }, taskOption)
 
   // 冬奥积分活动 20201231
   await scheduler.regTask('winterTwo', async (request) => {
@@ -92,14 +92,14 @@ var start = async (params) => {
   }, taskOption)
 
   // 首页-签到有礼-免费抽-拿666积分-豪礼大派送抽奖
-  await scheduler.regTask('jflottery', async (request) => {
-    await require('./jflottery').timesDraw(request, options)
-  }, taskOption)
+ // await scheduler.regTask('jflottery', async (request) => {
+ //  await require('./jflottery').timesDraw(request, options)
+ //  }, taskOption)
 
   // 首页-签到有礼-免费抽-拿苹果iPad Pro(摇一摇)
-  await scheduler.regTask('dailyYYY', async (request) => {
-    await require('./dailyYYY').doTask(request, options)
-  }, taskOption)
+ //  await scheduler.regTask('dailyYYY', async (request) => {
+ //   await require('./dailyYYY').doTask(request, options)
+ // }, taskOption)
 
   // 首页-签到有礼-免费抽-华为mate40pro(刮刮乐)
   await scheduler.regTask('dailyVideoScratchcard', async (request) => {
@@ -107,12 +107,12 @@ var start = async (params) => {
   }, taskOption)
 
   // 首页-签到有礼-免费抽-赢三星Galaxy Z(试试手气)
- // await scheduler.regTask('dailyCheapStorePage', async (request) => {
- //   await require('./dailyCheapStorePage').doTask(request, options)
- // }, {
- //   isCircle: true,
- //   intervalTime: 4 * 3600,
- //   ...taskOption
+//  await scheduler.regTask('dailyCheapStorePage', async (request) => {
+//    await require('./dailyCheapStorePage').doTask(request, options)
+//  }, {
+//    isCircle: true,
+//    intervalTime: 4 * 3600,
+//    ...taskOption
 //  })
 
   // 首页-签到有礼-免费抽-拆华为Pad(去抽奖)
@@ -121,14 +121,14 @@ var start = async (params) => {
   }, taskOption)
 
   // 首页-签到有礼-免费抽-拿iPhone12(摇一摇)
-  await scheduler.regTask('dailyYYQ', async (request) => {
-    await require('./dailyYYQ').doTask(request, options)
-  }, taskOption)
+  //await scheduler.regTask('dailyYYQ', async (request) => {
+  //  await require('./dailyYYQ').doTask(request, options)
+  // }, taskOption)
 
   // 首页-签到有礼-免费抽-赢Apple Watch(去抽奖)
-  await scheduler.regTask('dailyTurntablePage', async (request) => {
-    await require('./dailyTurntablePage').doTask(request, options)
-  }, taskOption)
+ // await scheduler.regTask('dailyTurntablePage', async (request) => {
+ //  await require('./dailyTurntablePage').doTask(request, options)
+ // }, taskOption)
 
   // 首页-签到有礼-赚更多福利-看视频奖励5积分
   await scheduler.regTask('dailyVideo', async (request) => {
@@ -175,12 +175,12 @@ var start = async (params) => {
   }, taskOption)
 
   // 首页-游戏-娱乐中心-每日打卡-完成今日任务(200m)
-  await scheduler.regTask('todayDailyTask', async (request) => {
-    await require('./producGame').doTodayDailyTask(request, options)
-  }, {
-    ...taskOption,
-    startTime: 20 * 3600
-  })
+ // await scheduler.regTask('todayDailyTask', async (request) => {
+ //   await require('./producGame').doTodayDailyTask(request, options)
+ // }, {
+ //   ...taskOption,
+ //  startTime: 20 * 3600
+ // })
 
   // 首页-签到有礼-居家娱乐馆
   await scheduler.regTask('gameYearBox', async (request) => {
