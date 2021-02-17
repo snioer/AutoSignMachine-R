@@ -1,6 +1,5 @@
 'use strict';
 
-
 // see https://github.com/serverless/serverless/blob/master/README_CN.md#how-to-install-a-service
 
 exports.main_handler = (event, context, callback) => {
