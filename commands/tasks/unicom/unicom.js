@@ -116,9 +116,9 @@ var start = async (params) => {
 //  })
 
   // 首页-签到有礼-免费抽-拆华为Pad(去抽奖)
-  await scheduler.regTask('dailyLKMH', async (request) => {
-    await require('./dailyLKMH').doTask(request, options)
-  }, taskOption)
+//  await scheduler.regTask('dailyLKMH', async (request) => {
+//    await require('./dailyLKMH').doTask(request, options)
+//  }, taskOption)
 
   // 首页-签到有礼-免费抽-拿iPhone12(摇一摇)
   //await scheduler.regTask('dailyYYQ', async (request) => {
