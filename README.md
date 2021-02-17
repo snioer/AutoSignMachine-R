@@ -169,4 +169,6 @@ docker run \
 ```
 
 ### GitHub Actions 运行问题
-暂未处理GitHub Actions支持
+1.将本代码仓库fork到自己的github。
+2.点击Settings选项卡，点击左侧Secrets，点击New secret，创建对应参数。
+3.点击Actions选项卡,开启功能。
