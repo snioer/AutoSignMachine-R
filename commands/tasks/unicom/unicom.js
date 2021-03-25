@@ -18,7 +18,7 @@ var start = async (params) => {
     init
   }
 
-  // 每日签到积分
+ /* // 每日签到积分
  // await scheduler.regTask('dailysignin', async (request) => {
  //   await require('./dailysignin').doTask(request, options)
  //   await require('./integral').addFlow(request, options)
@@ -145,13 +145,13 @@ var start = async (params) => {
     await require('./producGame').gameSignin(request, options)
     await require('./producGame').gameBox(request, options)
   }, taskOption)
-
+*/
   // 首页-游戏-娱乐中心-天天领取3G流量包
   await scheduler.regTask('dailygameflow', async (request) => {
     await require('./producGame').doGameFlowTask(request, options)
   }, taskOption)
 
-  // 首页-积分查询-游戏任务
+/*  // 首页-积分查询-游戏任务
   await scheduler.regTask('dailygameIntegral', async (request) => {
     await require('./producGame').doGameIntegralTask(request, options)
   }, taskOption)
@@ -204,7 +204,7 @@ var start = async (params) => {
     await require('./Niujie').doTask(request, options)
   }, taskOption)
 
-
+*/
   // 首页-牛气-场馆领牛气
   await scheduler.regTask('NiujieReceiveCalf', async (request) => {
     await require('./Niujie').receiveCalf(request, options)
